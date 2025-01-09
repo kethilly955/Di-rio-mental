@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multas Pro</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #08b5d7,#b0e1eb);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color:black;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #147b79;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .navbar ul li {
+            display: inline;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .navbar  ul li a:hover {
+            background-color: #147b79;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+        }
+        h1{
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            animation: fade-in 1s ease-in;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 1rem;  
+        }
+        button {
+            background-color: #136c76;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #d55747;
+        }
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            }
+        }
+
+        footer {
+            background-color: black;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+
+
+    </style>
+
+
+    
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Multas PRO</div>
+            <ul>
+                <li> <a href="#">Início</a> </li>
+                <li> <a href="#">Serviços</a> </li>
+                <li> <a href="#">Preços</a> </li>
+                <li> <a href="#">Sobre</a> </li>
+                <li> <a href="#">Contato</a> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Bem Vind@ - Faça seu Login</h1>
+        <form id="loginForm">
+            <input type="text" name="" id="username" placeholder="Digite seu nome">
+            <button type="submit">Fazer Login</button>
+
+        </form>
+    <p id="saudacao" style="margin-top: 20px; font-size: 1.2rem; display: none; " ></p>
+    </main>
+
+    <footer> <!-- Rodapé -->
+       © 2025 Multas PRO. Todos os direitos reservados. 
+    </footer>
+    <script>
+        const form = document.getElementById('loginForm');
+        const saudacao = document.getElementById('saudacao');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();//Evita o envio da formulario.
+            const username = document.getElementById('username').value;
+            saudacao.textContent = `Olá, ${username}! Bem vind@ ao nosso site. `;
+            saudacao.style.display = 'block';
+            form.style.display = 'none';
+        });
+        </script>
+
+
+    
+</body>
+</html>

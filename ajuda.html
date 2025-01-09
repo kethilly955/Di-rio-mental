@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuda - Diário Mental</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        /* ==========================
+   RESET E ESTILOS GERAIS
+============================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
+
+/* ==========================
+   ESTILOS DO CABEÇALHO (HEADER)
+============================= */
+header {
+    background-color: #8e44ad;
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+
+header nav ul li a:hover {
+    color: #f1f1f1;
+}
+
+
+/* ==========================
+   ESTILOS DA PÁGINA DE AJUDA
+============================= */
+.ajuda {
+    padding: 40px 20px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+
+.ajuda h1 {
+    font-size: 32px;
+    color: #8e44ad;
+    margin-bottom: 15px;
+}
+
+
+.ajuda p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+
+.ajuda ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+
+.ajuda ul li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+
+.ajuda ul li a {
+    color: #8e44ad;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
+.ajuda ul li a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================
+   ESTILOS DO RODAPÉ (FOOTER)
+============================= */
+footer {
+    background-color: #8e44ad;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+
+/* ==========================
+   RESPONSIVIDADE (TELAS PEQUENAS)
+============================= */
+
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    .ajuda {
+        padding: 30px 15px;
+    }
+
+
+    .ajuda h1 {
+        font-size: 28px;
+    }
+
+
+    .ajuda p {
+        font-size: 16px;
+    }
+
+
+    .ajuda ul li {
+        font-size: 14px;
+    }
+}
+
+
+/* Para telas menores que 480px */
+@media (max-width: 480px) {
+    header nav ul {
+        flex-direction: column;
+    }
+
+
+    header nav ul li a {
+        font-size: 16px;
+    }
+}
+
+
+    </style>
+
+   
+    <header>
+        <nav>
+            <ul>
+                <li><a href="estrutura.html">Início</a></li>
+                <li><a href="diario.html">Meu Diário</a></li>
+                <li><a href="ajuda.html">Ajuda</a></li>
+                <li><a href="comunidade.html">Comunidade</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="ajuda">
+            <h1>Recursos de Ajuda</h1>
+            <p>Se você está passando por um momento difícil ou crise emocional, estamos aqui para ajudar. Aqui estão algumas opções de apoio que podem ser úteis:</p>
+            
+            <h2>Ou entre em contato com o <strong>CAPS</strong> (Centro de Atenção Psicossocial)</h2>
+                <p><strong>Número de telefone do CAPS:</strong> <span class="numero-emergencia">Ligue para o CAPS da sua cidade</span></p>
+                <p>O CAPS oferece atendimento especializado em saúde mental, com profissionais capacitados para ajudar em situações de crise. Se você não sabe o número do CAPS da sua região, entre em contato com o posto de saúde ou serviço de emergência local.</p>
+            </div>
+
+            <!-- Seção de Emergência -->
+            <div class="emergencia">
+                <h2>Se você estiver em uma crise, ligue imediatamente:</h2>
+                <p><strong>CVV - Centro de Valorização da Vida:</strong> <span class="numero-emergencia">188</span></p>
+                <p>O CVV oferece apoio emocional gratuito e sigiloso. Eles estão prontos para te ouvir, a qualquer hora, de qualquer lugar.</p>
+                <a href="https://cvv.org.br" target="_blank" class="link-ajuda">Acessar CVV</a>
+            </div>
+
+            <p>Ainda há mais opções de apoio caso você precise de ajuda em outro momento:</p>
+            <div class="links-ajuda">
+                <div class="ajuda-item">
+                    <h2>Psicólogos Online</h2>
+                    <p>Plataformas como Psicologia Online oferecem apoio psicológico à distância, com a possibilidade de agendar consultas com profissionais qualificados.</p>
+                    <a href="https://www.doctoralia.com.br/psicologo/online" target="_blank" class="link-ajuda">Acessar Psicologia Online</a>
+                </div>
+                <div class="ajuda-item">
+                    <h2>Guia de Autocuidado</h2>
+                    <p>O autocuidado é fundamental para a saúde mental. Acesse esse guia para aprender sobre práticas simples e eficazes para se cuidar melhor.</p>
+                    <a href="https://drpio.com.br/admin/assets/upload/arquivos/guia-autocuidado-completo-785.pdf" target="_blank" class="link-ajuda">Acessar Guia de Autocuidado</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Diário Mental - Todos os direitos reservados. | <a href="privacidade.html">Política de Privacidade</a></p>
+    </footer>
+</body>
+</html>

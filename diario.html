@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Mental - IA Interativa</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link para o CSS externo -->
+</head>
+<body>
+    <style>
+        /* RESET GERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos do Cabeçalho */
+header {
+    background-color: #8e44ad;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+header nav ul li a:hover {
+    color: #f1f1f1;
+}
+
+/* Estilo do Chat */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 60vh;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+    max-height: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    border-radius: 25px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: #8e44ad;
+    color: white;
+    margin-left: auto;
+    font-size: 16px;
+}
+
+.user-message {
+    background-color: #f1f1f1;
+    color: #333;
+    margin-right: auto;
+    font-size: 16px;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    background-color: #fafafa;
+}
+
+#send-btn {
+    padding: 12px 25px;
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#send-btn:hover {
+    background-color: #7d3c96;
+}
+
+/* Estilo do Diário */
+.diario-container {
+    margin-top: 40px;
+    background-color: white;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.diario-container h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #8e44ad;
+    text-align: center;
+}
+
+textarea#diario-input {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    resize: none;
+}
+
+#save-btn {
+    padding: 12px 25px;
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+#save-btn:hover {
+    background-color: #7d3c96;
+}
+
+#diario-output {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .chat-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .chat-box {
+        max-height: 300px;
+    }
+
+    #user-input {
+        font-size: 14px;
+    }
+
+    .diario-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    textarea#diario-input {
+        height: 120px;
+    }
+
+    #save-btn {
+        width: 100%;
+    }
+}
+
+/* Estilo do Rodapé */
+footer {
+    background-color: #8e44ad;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #f8f8f8;
+}
+
+    </style>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="estrutura.html">Início</a></li>
+                <li><a href="diario.html">Meu Diário</a></li>
+                <li><a href="ajuda.html">Ajuda</a></li>
+                <li><a href="comunidade.html">Comunidade</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="chat-container">
+            <div class="chat-box" id="chat-box">
+                <div class="message bot-message">
+                    <p>Olá! Como posso te ajudar hoje? Estou aqui para ouvir.</p>
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+                <button id="send-btn">Enviar</button>
+            </div>
+        </div>
+
+        <div class="diario-container">
+            <h2>Seu Diário</h2>
+            <textarea id="diario-input" placeholder="Escreva seus pensamentos ou sentimentos..."></textarea>
+            <button id="save-btn">Salvar Diário</button>
+            <div id="diario-output"></div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Diário Mental - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Elementos da interface
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const diarioInput = document.getElementById('diario-input');
+        const saveBtn = document.getElementById('save-btn');
+        const diarioOutput = document.getElementById('diario-output');
+
+        // Respostas empáticas e acolhedoras do bot
+        const responses = {
+            "olá": [
+                "Oi! Como posso te ajudar hoje? Estou aqui para ouvir.",
+                "Olá! Como você está se sentindo? Posso ajudar com algo?",
+                "Oi, tudo bem? Fique à vontade para conversar comigo."
+            ],
+            "como você está?": [
+                "Eu estou bem, obrigada por perguntar! Como você está se sentindo?",
+                "Estou aqui para te ouvir! E você, como está hoje?",
+                "Estou aqui e pronto para ajudar. Como você está?"
+            ],
+            "qual seu nome?": [
+                "Eu sou a IA do Diário Mental. Fico feliz em estar aqui com você!",
+                "Meu nome não importa muito, mas estou sempre aqui para te ouvir!",
+                "Você pode me chamar de IA do Diário Mental. E eu estou aqui para ajudar você!"
+            ],
+            "triste": [
+                "Sinto muito que você esteja se sentindo assim. Quer conversar sobre isso? Estou aqui para ouvir.",
+                "Eu entendo que momentos de tristeza são difíceis. Fique à vontade para desabafar, estou aqui para te apoiar.",
+                "Lamento saber que você está triste. Se quiser conversar, estarei aqui para te ouvir."
+            ],
+            "ansioso": [
+                "A ansiedade pode ser difícil de lidar. Que tal tentarmos respirar fundo juntos? Eu estou aqui com você.",
+                "Eu sei que a ansiedade pode ser difícil. Vamos tentar encontrar um pouco de paz, juntos.",
+                "Eu entendo como a ansiedade pode ser pesada. Vamos dar um passo de cada vez. Eu estou com você."
+            ],
+            "estou bem": [
+                "Que bom que você está bem! Isso é ótimo! Continue assim, cuidando de si mesmo.",
+                "Fico feliz que você esteja bem! Se precisar de algo, estarei aqui para conversar."
+            ],
+            "preciso de ajuda": [
+                "Estou aqui para você. O que está te preocupando? Vamos falar sobre isso juntos.",
+                "Se você precisar desabafar, estou aqui. O que está te incomodando?",
+                "Entendo que você precise de ajuda. Estou aqui para ouvir e te apoiar. O que está acontecendo?"
+            ],
+            "tchau": [
+                "Até logo! Lembre-se, sempre que precisar, estarei por aqui. Cuide-se!",
+                "Tchau! Fique bem e, sempre que precisar de alguém para conversar, estou aqui.",
+                "Foi bom conversar com você! Estarei por aqui quando você precisar. Fique bem!"
+            ],
+            "default": [
+                "Eu entendo, nem sempre é fácil falar, mas estou aqui para te ouvir. O que você gostaria de compartilhar?",
+                "Tudo bem, se não tiver palavras, eu continuo aqui. O que está em sua mente?",
+                "Não precisa dizer nada, eu posso ficar em silêncio com você se precisar. Quando estiver pronto, estou aqui."
+            ]
+        };
+
+        // Função para mostrar mensagens no chat
+        function displayMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            messageElement.innerHTML = `<p>${message}</p>`;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;  // Rolagem para a última mensagem
+        }
+
+        // Função para processar a entrada do usuário no chat
+        function processInput(input) {
+            const formattedInput = input.toLowerCase().trim();
+            let responseList = responses[formattedInput] || responses["default"];
+
+            // Respostas personalizadas para variações mais comuns
+            if (formattedInput.includes("triste")) {
+                responseList = responses["triste"];
+            } else if (formattedInput.includes("ansioso")) {
+                responseList = responses["ansioso"];
+            } else if (formattedInput.includes("bem")) {
+                responseList = responses["estou bem"];
+            } else if (formattedInput.includes("ajuda")) {
+                responseList = responses["preciso de ajuda"];
+            }
+            return responseList[Math.floor(Math.random() * responseList.length)];
+        }
+
+        // Função para enviar a mensagem no chat
+        function sendMessage() {
+            const userText = userInput.value.trim();
+            if (userText) {
+                displayMessage(userText, 'user');
+                // Adiciona um pequeno atraso para a resposta do bot (para simular uma interação mais natural)
+                setTimeout(() => {
+                    const botResponse = processInput(userText);
+                    displayMessage(botResponse, 'bot');
+                }, 1000); // Atraso de 1 segundo antes da resposta
+            }
+            userInput.value = '';  // Limpa o campo de entrada
+        }
+
+        // Função para salvar o diário
+        function saveDiario() {
+            const diarioText = diarioInput.value.trim();
+            if (diarioText) {
+                const newEntry = document.createElement('p');
+                newEntry.textContent = diarioText;
+                diarioOutput.appendChild(newEntry);
+                diarioInput.value = ''; // Limpa o campo do diário
+            }
+        }
+
+        // Evento de click no botão de enviar no chat
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Evento de pressionar 'Enter' no campo de entrada do chat
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Evento de click no botão de salvar diário
+        saveBtn.addEventListener('click', saveDiario);
+    </script>
+
+</body>
+</html>
