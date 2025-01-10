@@ -262,7 +262,7 @@ audio {
     <header>
         <nav>
             <ul>
-                <li><a href="estrutura.html">Início</a></li>
+                <li><a href="index.html">Início</a></li>
                 <li><a href="diario.html">Meu Diário</a></li>
                 <li><a href="ajuda.html">Ajuda</a></li>
                 <li><a href="comunidade.html">Comunidade</a></li>
@@ -305,42 +305,113 @@ audio {
     </footer>
 
     <script>
-        // Elementos da interface
-        const chatBox = document.getElementById('chat-box');
-        const userInput = document.getElementById('user-input');
-        const sendBtn = document.getElementById('send-btn');
-        const diarioInput = document.getElementById('diario-input');
-        const saveBtn = document.getElementById('save-btn');
-        const diarioOutput = document.getElementById('diario-output');
+      // Elementos da interface
+const chatBox = document.getElementById('chat-box');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
 
-        // Função para mostrar mensagens no chat
-        function displayMessage(message, sender) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
-            messageElement.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
-            messageElement.innerHTML = `<p>${message}</p>`;
-            chatBox.appendChild(messageElement);
-            chatBox.scrollTop = chatBox.scrollHeight;  // Rolagem para a última mensagem
-        }
+// Função para mostrar mensagens no chat
+function displayMessage(message, sender) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+    messageElement.innerHTML = `<p>${message}</p>`;
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;  // Rolagem para a última mensagem
+}
 
-        // Função para processar a entrada do usuário no chat
-        function processInput(input) {
-            const formattedInput = input.toLowerCase().trim();
-            return "Eu entendo, nem sempre é fácil falar, mas estou aqui para te ouvir. O que você gostaria de compartilhar?";
-        }
+// Função para processar a entrada do usuário no chat
+function processInput(input) {
+    const formattedInput = input.toLowerCase().trim();
+    
+    // Respostas emocionais e de apoio
+    if (formattedInput.includes('triste') || formattedInput.includes('deprimido') || formattedInput.includes('ansioso')) {
+        return "Sinto muito que você esteja se sentindo assim. Às vezes, conversar sobre isso pode ajudar. Você gostaria de compartilhar o que está acontecendo?";
+    }
 
-        // Função para enviar a mensagem no chat
-        function sendMessage() {
-            const userText = userInput.value.trim();
-            if (userText) {
-                displayMessage(userText, 'user');
-                setTimeout(() => {
-                    const botResponse = processInput(userText);
-                    displayMessage(botResponse, 'bot');
-                }, 1000);
-            }
-            userInput.value = '';
-        }
+    if (formattedInput.includes('feliz') || formattedInput.includes('bem')) {
+        return "Que ótimo que você está se sentindo bem! O que está fazendo você se sentir assim?";
+    }
+
+    if (formattedInput.includes('solitário') || formattedInput.includes('sozinho')) {
+        return "Você não está sozinho(a). Fico feliz em ouvir o que você tem a compartilhar. Que tal me contar mais sobre como você está se sentindo?";
+    }
+
+    // Perguntas gerais sobre saúde mental
+    if (formattedInput.includes('ajuda') || formattedInput.includes('suporte')) {
+        return "Estou aqui para te ouvir, mas também recomendo procurar um profissional da saúde mental para um apoio mais profundo. Como posso ajudar você hoje?";
+    }
+
+    // Perguntas comuns
+    if (formattedInput.includes('olá', 'ola', 'oi','oiii') || formattedInput.includes('oi')) {
+        return "Olá! Como posso te ajudar hoje?";
+    }
+
+    if (formattedInput.includes('como você está') || formattedInput.includes('como vai')) {
+        return "Estou aqui para ajudar você. E você, como está se sentindo hoje?";
+    }
+
+    if (formattedInput.includes('qual seu nome') || formattedInput.includes('quem é você')) {
+        return "Eu sou um assistente virtual criado para te ouvir e te apoiar. Não sou humano, mas estou aqui para ajudar no que você precisar.";
+    }
+
+    // Respostas mais neutras e profissionais
+    if (formattedInput.includes('trabalho') || formattedInput.includes('carreira')) {
+        return "O trabalho pode ser uma fonte de estresse, mas também pode ser muito gratificante. Você gostaria de conversar sobre a sua carreira ou trabalho?";
+    }
+
+    if (formattedInput.includes('família')) {
+        return "A família pode ser uma grande fonte de apoio ou também um desafio. Como você se sente em relação à sua família?";
+    }
+
+    if (formattedInput.includes('relacionamento') || formattedInput.includes('namoro') || formattedInput.includes('casamento')) {
+        return "Relacionamentos podem ser complicados, mas também são fundamentais para nosso bem-estar. Você gostaria de falar sobre o que está acontecendo?";
+    }
+
+    if (formattedInput.includes('estresse') || formattedInput.includes('sobrecarregado')) {
+        return "É normal sentir-se sobrecarregado de vez em quando. Você já tentou algumas técnicas de relaxamento, como meditação ou respiração profunda?";
+    }
+
+    // Perguntas de conhecimento geral
+    if (formattedInput.includes('capital do brasil')) {
+        return "A capital do Brasil é Brasília!";
+    }
+
+    if (formattedInput.includes('quantos estados o brasil tem')) {
+        return "O Brasil possui 26 estados e o Distrito Federal.";
+    }
+
+    // Resposta padrão para perguntas não reconhecidas
+    return "Eu não tenho certeza sobre isso, mas posso tentar ajudar de outra forma. Você gostaria de conversar sobre como se sente?";
+}
+
+// Função para enviar a mensagem no chat
+function sendMessage() {
+    const userText = userInput.value.trim();
+    
+    // Evitar envio de mensagens vazias
+    if (userText) {
+        displayMessage(userText, 'user');  // Exibe a mensagem do usuário
+        userInput.value = '';  // Limpa o campo de entrada
+
+        setTimeout(() => {
+            const botResponse = processInput(userText);  // Processa a resposta do bot
+            displayMessage(botResponse, 'bot');  // Exibe a resposta do bot
+        }, 1000);
+    } else {
+        alert("Por favor, digite uma mensagem antes de enviar.");
+    }
+}
+
+// Evento de clique no botão de enviar
+sendBtn.addEventListener('click', sendMessage);
+
+// Evento de pressionamento da tecla Enter
+userInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+});
 
         // Evento de click no botão de enviar no chat
         sendBtn.addEventListener('click', sendMessage);
