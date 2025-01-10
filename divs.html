@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+       body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f4f4f9;
+       }
+       .container {
+        display: flex;
+        gap: 10px;
+       }
+       .box {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+       }
+       .box:hover {
+        transform: scale(1.1);
+       }
+       .box1 { background-color: #ff6f61; }
+       .box2 { background-color: #6fa8dc; }
+       .box3 { background-color: #93c47d; }
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <h1>Site do Kethilly</h1>
+    <h2>Divs interativas</h2>
+
+    <div class="container">
+        <div class="box box1" onclick="alertMessage('Caixa 01')">Caixa 01</div>
+        <div class="box box2" onclick="alertMessage('Caixa 01')">Caixa 02</div>
+        <div class="box box3" onclick="alertMessage('Caixa 01')">Caixa 03</div>
+    </div>
+
+
+    
+</body>
+</html>

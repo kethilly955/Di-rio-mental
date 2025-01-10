@@ -1,61 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-       body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background-color: #f4f4f9;
-       }
-       .container {
-        display: flex;
-        gap: 10px;
-       }
-       .box {
-        width: 100px;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        color: #fff;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-       }
-       .box:hover {
-        transform: scale(1.1);
-       }
-       .box1 { background-color: #ff6f61; }
-       .box2 { background-color: #6fa8dc; }
-       .box3 { background-color: #93c47d; }
-
-
-    </style>
-
+    <title>Diário Mental</title>
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
-
-    <h1>Site do Kethilly</h1>
-    <h2>Divs interativas</h2>
-
-    <div class="container">
-        <div class="box box1" onclick="alertMessage('Caixa 01')">Caixa 01</div>
-        <div class="box box2" onclick="alertMessage('Caixa 01')">Caixa 02</div>
-        <div class="box box3" onclick="alertMessage('Caixa 01')">Caixa 03</div>
-    </div>
-
-
+    <style>/* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Estilos gerais */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7; /* Cor de fundo suave */
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+        }
+        
+        /* Estilos do cabeçalho */
+        header {
+            background-color: #8e44ad; /* Cor roxa */
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        /* Efeito ao passar o mouse nos links */
+        header nav ul li a:hover {
+            color: #f1f1f1;
+        }
+        
+        /* Estilo da introdução */
+        .intro {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            border-radius: 12px;
+        }
+        
+        .intro h1 {
+            font-size: 32px;
+            color: #8e44ad;
+            margin-bottom: 15px;
+        }
+        
+        .intro p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .intro form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .intro form input[type="text"] {
+            width: 80%;
+            max-width: 350px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            transition: border 0.3s ease;
+        }
+        
+        .intro form input[type="text"]:focus {
+            border-color: #8e44ad;
+            outline: none;
+        }
+        
+        .intro .btn {
+            padding: 12px 30px;
+            background-color: #8e44ad;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .intro .btn:hover {
+            background-color: #7d3c96;
+        }
+        
+        /* Estilos para o rodapé */
+        footer {
+            background-color: #8e44ad;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .intro {
+                padding: 30px 15px;
+            }
+        
+            .intro h1 {
+                font-size: 28px;
+            }
+        
+            .intro p {
+                font-size: 16px;
+            }
+        
+            .intro form input[type="text"], .intro .btn {
+                width: 90%;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header nav ul {
+                flex-direction: column;
+            }
+        
+            header nav ul li a {
+                font-size: 16px;
+            }
+        }
+        </style>
     
+    <header>
+        <nav>
+            <ul>
+                <li><a href="estrutura.html">Início</a></li>
+                <li><a href="diario.html">Meu Diário</a></li>
+                <li><a href="ajuda.html">Ajuda</a></li>
+                <li><a href="comunidade.html">Comunidade</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Bem-vindo ao seu espaço pessoal</h1>
+            <p>Aqui você pode escrever, refletir e buscar apoio para cuidar da sua saúde mental.</p>
+            <p>Faça login para começar a registrar seus pensamentos e sentimentos.</p>
+            <form action="salvar_diario.php" method="POST">
+                <input type="text" name="nome" placeholder="Digite seu nome" required>
+            <a href="diario.html" class="btn">Comece seu diário</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Diário Mental - Todos os direitos reservados.</p>
+    </footer>
+
+  
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const diaryEntry = document.querySelector('textarea').value;
+            if (!diaryEntry) {
+                e.preventDefault();
+                alert("Por favor, escreva algo antes de salvar.");
+            }
+        });
+    </script>
 </body>
 </html>
